@@ -1,6 +1,6 @@
 {
-    "name": "ssx/php-ssh-keypairs",
-    "description": "Simple wrapper to generate RSA/SSH keypairs.",
+    "name": "ssx/php-ssh-keypair",
+    "description": "Simple wrapper to generate RSA/SSH key-pairs.",
     "type": "library",
     "keywords": [ "ssh", "keys", "rsa" ],
     "license": "Apache-2.0",
