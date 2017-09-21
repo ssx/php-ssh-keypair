@@ -11,15 +11,52 @@
 
 namespace SSX\SSH;
 
+use phpseclib\Crypt\RSA;
+
+/**
+ * Class KeyPair
+ * @package SSX\SSH
+ */
 class KeyPair
 {
+
     /**
-     * Create a new rule instance.
-     *
-     * @return void
+     * @var
      */
-    public function __construct()
+    private $public_key;
+    /**
+     * @var
+     */
+    private $private_key;
+
+    /**
+     * Generate a new KeyPair constructor.
+     * @param int $bits
+     */
+    public function __construct($bits = 4096)
     {
-        //
+        $rsa = new RSA();
+        $rsa->setPublicKeyFormat(RSA::PUBLIC_FORMAT_OPENSSH);
+        $rsa->setPrivateKeyFormat(RSA::PRIVATE_FORMAT_PKCS1);
+        $key = $rsa->createKey($bits);
+        $this->private_key = $key["privatekey"];
+        $this->public_key = $key["publickey"];
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getPublicKey()
+    {
+        return $this->public_key;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrivateKey()
+    {
+        return $this->private_key;
     }
 }

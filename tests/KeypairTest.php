@@ -12,6 +12,7 @@
 namespace SSX\SSH\Tests;
 
 use PHPUnit\Framework\TestCase;
+use SSX\SSH\KeyPair;
 
 final class KeypairTest extends TestCase
 {
@@ -21,6 +22,8 @@ final class KeypairTest extends TestCase
      */
     public function testItCanGenerateAKeyPair()
     {
-        $this->assertTrue(false);
+        $keypair = new KeyPair(4096);
+        $this->assertNotEmpty($keypair->getPrivateKey());
+        $this->assertNotEmpty($keypair->getPublicKey());
     }
 }
